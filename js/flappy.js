@@ -13,21 +13,8 @@ function Barreira(reversa = false){
     else{
         this.elemento.src = 'imgs/aguaviva.png';
     }
-    /*this.elemento vai adicionar na DOM
-    o elemento criado chamando o metodo novoElemento*/
-    //const borda = novoElemento('div', 'borda');
-    //const corpo = novoElemento('div', 'corpo');
-    //this.elemento.appendChild(reversa ? corpo : borda);
-    /*se reversa for true, adiciona primeiro o corpo
-    se não, adiciona primeiro a borda*/
-    //this.elemento.appendChild(reversa ? borda : corpo);
-    /*se reversa for true, adiciona primeiro a borda
-    se não, adiciona primeiro o corpo*/
     this.setAltura = altura => this.elemento.style.height = `${altura}px`;
 }
-//const b = new Barreira(false)
-//b.setAltura(200)
-//document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
 function ParDeBarreiras(altura, abertura, x){
     this.elemento = novoElemento('div', 'par-de-barreiras');
@@ -48,8 +35,6 @@ function ParDeBarreiras(altura, abertura, x){
     this.sortearAbertura()
     this.setX(x)
 }
-//const b = new ParDeBarreiras(700, 200, 400)
-//document.querySelector('[wm-flappy]').appendChild(b.elemento)
 
 function Barreiras(altura, largura, abertura, espaco, notificarPonto){
     this.pares = [
@@ -72,7 +57,7 @@ function Barreiras(altura, largura, abertura, espaco, notificarPonto){
                 par.sortearAbertura();
             }
             const meio = largura /2;
-            //se o X do par + o deslocamento que eu acabei de dar
+            //se o X do par + o deslocamento 
             //for maior ou igual ao meio, e a posição X sem 
             //o deslocamento for menor que o meio
             const cruzouMeio = par.getX() + deslocamento >= meio
@@ -131,27 +116,11 @@ function Progresso(){
     this.atualizarPontos(0)
 }
 
-// const barreiras = new Barreiras(700, 1200, 200, 400)
-// const passaro = new Passaro(700)
-// const areaDoJogo =  document.querySelector('[wm-flappy]')
-// areaDoJogo.appendChild(passaro.elemento)
-// areaDoJogo.appendChild(new Progresso().elemento)
-// barreiras.pares.forEach(par => areaDoJogo.appendChild(par.elemento))
-// setInterval(() =>{
-//     barreiras.animar()
-//    passaro.animar()
-// }, 20)
-
 function estaoSobrepostos(elementoA, elementoB){
     const a = elementoA.getBoundingClientRect()
     const b = elementoB.getBoundingClientRect()
 
-    //a.left = lado esquerdo do elemento A
-    //mais a largura dele = lado direito
-    //se o lado esquerdo do B. colisao
-
-    //lado direito de B mais a largura dele
-    //é maior que o lado esquerdo de A
+    //colisao
     const horizontal = a.left-8 + a.width-8 >= b.left-8
         && b.left-8 + b.width-8 >= a.left-8
     const vertical = a.top-8 + a.height-8 >= b.top-8
